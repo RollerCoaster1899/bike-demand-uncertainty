@@ -141,4 +141,4 @@ def test_ridge_config_defaults():
 def test_rf_config_defaults():
     cfg = ExperimentConfig()
     assert cfg.random_forest.n_estimators == 300
-    assert cfg.random_forest.n_jobs == -1
+    assert cfg.random_forest.n_jobs == 1

@@ -489,7 +489,7 @@ def _atomic_write_json(data: Any, path: Path) -> None:
     """Write JSON atomically via temp file and rename."""
     tmp = path.with_suffix(".tmp")
     with open(tmp, "w") as f:
-        json.dump(data, f, indent=2, default=_json_default)
+        json.dump(_round_floats(data), f, indent=2, default=_json_default)
         f.write("\n")
         f.flush()
     tmp.rename(path)
@@ -591,15 +591,15 @@ def _save_predictions_csv(results: ExperimentResults, path: Path) -> None:
         row: dict[str, Any] = {
             "timestamp": ts.isoformat(),
             "horizon_hour": ts.hour + 1,  # 1-24
-            "actual": float(results.y_test[i]),
+            "actual": round(float(results.y_test[i]), 8),
         }
         for method in METHOD_NAMES:
-            row[f"{method}_prediction"] = float(results.method_predictions[method][i])
+            row[f"{method}_prediction"] = round(float(results.method_predictions[method][i]), 8)
             lo = results.method_lower[method]
             up = results.method_upper[method]
             if lo is not None and up is not None:
-                row[f"{method}_lower"] = float(lo[i])
-                row[f"{method}_upper"] = float(up[i])
+                row[f"{method}_lower"] = round(float(lo[i]), 8)
+                row[f"{method}_upper"] = round(float(up[i]), 8)
         records.append(row)
 
     if not records:
@@ -629,10 +629,10 @@ def _save_per_hour_csv(results: ExperimentResults, path: Path) -> None:
                         "hour": row["hour"],
                         "count": row["count"],
                         "method": method,
-                        "mae": row["mae"],
-                        "rmse": row["rmse"],
-                        "mase": row["mase"],
-                        "bias": row["bias"],
+                        "mae": round(float(row["mae"]), 8),
+                        "rmse": round(float(row["rmse"]), 8),
+                        "mase": round(float(row["mase"]), 8),
+                        "bias": round(float(row["bias"]), 8),
                     }
                 )
     tmp.rename(path)
@@ -646,3 +646,16 @@ def _json_default(obj: Any) -> Any:
     if isinstance(obj, np.ndarray):
         return obj.tolist()
     raise TypeError(f"Object of type {type(obj)} is not JSON serializable")
+
+
+def _round_floats(obj: Any) -> Any:
+    """Round artifact floats to stable, analysis-grade precision."""
+    if isinstance(obj, (float, np.floating)):
+        return round(float(obj), 12)
+    if isinstance(obj, dict):
+        return {key: _round_floats(value) for key, value in obj.items()}
+    if isinstance(obj, list):
+        return [_round_floats(value) for value in obj]
+    if isinstance(obj, tuple):
+        return tuple(_round_floats(value) for value in obj)
+    return obj

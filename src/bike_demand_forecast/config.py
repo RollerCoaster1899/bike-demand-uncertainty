@@ -66,7 +66,7 @@ class RandomForestConfig:
     n_estimators: int = 300
     max_depth: int = 32
     min_samples_leaf: int = 5
-    n_jobs: int = -1
+    n_jobs: int = 1
     random_state: int = 42
 
 
