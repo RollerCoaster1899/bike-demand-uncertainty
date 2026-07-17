@@ -1,0 +1,46 @@
+# Full evaluation configuration for bike demand forecasting.
+data:
+  url: "https://archive.ics.uci.edu/static/public/275/bike+sharing+dataset.zip"
+  raw_dir: "data/raw"
+  expected_hour_csv_sha256: "e03de4ee4ef4dc376ac6e04bf829673c6269e8eba5c60fa121640fa2f829504f"
+  expected_zip_sha256: "b70182d0d0508e9abbb79306ce5c0cec34869000f8220175ac83d11dbe845401"
+
+temporal:
+  train_fraction: 0.6
+  cal_fraction: 0.15
+  test_fraction: 0.25
+  min_train_rows: 5000
+  min_cal_rows: 1000
+  min_test_rows: 1000
+
+features:
+  lag_hours: [24, 48, 168]
+  rolling_windows_hours: [24, 48, 168]
+  calendar: ["hour", "weekday", "month", "season", "year", "workingday", "holiday"]
+
+ridge:
+  alpha: 1.0
+  random_state: 42
+
+random_forest:
+  n_estimators: 300
+  max_depth: 32
+  min_samples_leaf: 5
+  n_jobs: -1
+  random_state: 42
+
+hgb:
+  random_state: 42
+  learning_rate: 0.1
+  max_iter: 500
+  max_leaf_nodes: 64
+  min_samples_leaf: 20
+  l2_regularization: 0.1
+
+conformal:
+  significance_level: 0.1
+  method: "higher"
+
+reporting:
+  bootstrap_samples: 10000
+  bootstrap_ci_level: 0.95

@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "mode": "full",
+  "source": "UCI Bike Sharing",
+  "n_train": 9991,
+  "n_cal": 2583,
+  "n_test": 4257,
+  "n_features": 19,
+  "seasonal_scale": 53.717745971374235,
+  "selected_method": "random_forest",
+  "methods": {
+    "seasonal_naive": {
+      "mase": 1.4852426125213243,
+      "mae": 79.78388536528071,
+      "rmse": 133.2733973815195,
+      "smape": 41.92924172955305,
+      "interval_coverage": 0.9090909090909091,
+      "mean_interval_width": 395.06647874089737,
+      "winkler_score": 615.667841202725
+    },
+    "ridge": {
+      "mase": 1.1110720719194012,
+      "mae": 59.684287315254835,
+      "rmse": 93.26302932418005,
+      "smape": 39.27475552574137,
+      "interval_coverage": 0.8949964763918252,
+      "mean_interval_width": 262.2124727972524,
+      "winkler_score": 431.9397017722588
+    },
+    "random_forest": {
+      "mase": 1.1543394606730195,
+      "mae": 62.008513913166404,
+      "rmse": 97.97471081257781,
+      "smape": 32.30366421307079,
+      "interval_coverage": 0.8924124970636599,
+      "mean_interval_width": 281.698958345536,
+      "winkler_score": 459.382948798502
+    },
+    "hist_gradient_boosting": {
+      "mase": 1.2351816966639895,
+      "mae": 66.35117660988722,
+      "rmse": 102.65074116673036,
+      "smape": 41.48686135040875,
+      "interval_coverage": 0.8832511158092553,
+      "mean_interval_width": 285.24948017067754,
+      "winkler_score": 473.7135283592417
+    }
+  },
+  "comparisons": {
+    "ridge": {
+      "improvement_mean": 0.3637186494340977,
+      "ci_lower": 0.23897730723734295,
+      "ci_upper": 0.4891589146920729,
+      "ci_level": 0.95,
+      "n_samples": 10000,
+      "bootstrap_probability_improvement": 1.0
+    },
+    "random_forest": {
+      "improvement_mean": 0.32381187861851096,
+      "ci_lower": 0.20605648367909665,
+      "ci_upper": 0.44349756982305205,
+      "ci_level": 0.95,
+      "n_samples": 10000,
+      "bootstrap_probability_improvement": 1.0
+    },
+    "hist_gradient_boosting": {
+      "improvement_mean": 0.23892357013027496,
+      "ci_lower": 0.10552332012244339,
+      "ci_upper": 0.37394590345830725,
+      "ci_level": 0.95,
+      "n_samples": 10000,
+      "bootstrap_probability_improvement": 0.9998
+    }
+  },
+  "calibration_mase": {
+    "seasonal_naive": 1.5529256774524212,
+    "ridge": 1.176065290495701,
+    "random_forest": 1.1288123226581406,
+    "hist_gradient_boosting": 1.1327097155231713
+  }
+}

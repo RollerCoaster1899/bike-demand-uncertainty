@@ -1,0 +1,56 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+.env
+.env.*
+!.env.example
+**/.env
+**/.env.*
+!**/.env.example
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Downloaded data
+data/raw/*
+!data/raw/.gitkeep
+data/interim/*
+!data/interim/.gitkeep
+
+# Smoke artifacts (tracked in git, but smoke is ephemeral)
+reports/smoke/
+reports/*/smoke/
+
+# Coverage
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+
+# Mypy / Ruff / pip cache
+.mypy_cache/
+.ruff_cache/
+.pip-audit-cache/
+
+# Pre-commit
+.pre-commit-config.yaml.bak
+
+# Logs
+logs/
+*.log
