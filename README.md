@@ -134,7 +134,7 @@ See [docs/data_card.md](docs/data_card.md) for full documentation.
 Download the data:
 
 ```bash
-python scripts/download_data.py
+uv run python scripts/download_data.py
 ```
 
 ## Methodology
@@ -174,13 +174,13 @@ uv sync --extra dev
 
 ```bash
 # Download data first
-python scripts/download_data.py
+uv run python scripts/download_data.py
 
 # Full evaluation
-python scripts/reproduce.py
+uv run python scripts/reproduce.py
 
 # Smoke test (synthetic data, CI-safe)
-python scripts/reproduce.py --smoke
+uv run python scripts/reproduce.py --smoke
 ```
 
 Artifacts are written to ``reports/`` (full) or ``reports/smoke/`` (smoke).

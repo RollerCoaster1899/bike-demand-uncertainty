@@ -15,7 +15,7 @@ UCI Bike Sharing dataset (dataset id 275).
 Download with:
 
 ```bash
-python scripts/download_data.py
+uv run python scripts/download_data.py
 ```
 
 The zip file is extracted to `data/raw/` and contains:

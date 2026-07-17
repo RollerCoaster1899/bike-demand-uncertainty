@@ -2,7 +2,7 @@
 """Download the UCI Bike Sharing dataset and extract hour.csv.
 
 Usage:
-    python scripts/download_data.py
+    uv run python scripts/download_data.py
 """
 
 from __future__ import annotations

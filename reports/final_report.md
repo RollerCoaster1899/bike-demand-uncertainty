@@ -160,13 +160,13 @@ For hist_gradient_boosting, the paired day-block bootstrap MASE-improvement CI e
 
 ```bash
 uv sync --extra dev
-python scripts/download_data.py
-python scripts/reproduce.py  # full run
+uv run python scripts/download_data.py
+uv run python scripts/reproduce.py  # full run
 ```
 
 For smoke test:
 ```bash
-python scripts/reproduce.py --smoke
+uv run python scripts/reproduce.py --smoke
 ```
 
 ---

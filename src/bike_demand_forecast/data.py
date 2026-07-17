@@ -185,7 +185,8 @@ def load_raw_data(cfg: ExperimentConfig) -> pd.DataFrame:
     hour_csv_path = Path(cfg.data.raw_dir) / "hour.csv"
     if not hour_csv_path.exists():
         raise DataError(
-            f"hour.csv not found at {hour_csv_path}. Run 'python scripts/download_data.py' first."
+            f"hour.csv not found at {hour_csv_path}. "
+            "Run 'uv run python scripts/download_data.py' first."
         )
 
     df = pd.read_csv(hour_csv_path)

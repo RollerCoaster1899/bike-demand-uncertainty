@@ -2,9 +2,9 @@
 """Reproduce the experiment: run pipeline, generate report/figures, update README.
 
 Usage:
-    python scripts/reproduce.py            # full run (configs/full.yaml)
-    python scripts/reproduce.py --smoke    # smoke test (configs/smoke.yaml)
-    python scripts/reproduce.py --config <path>  # custom config
+    uv run python scripts/reproduce.py            # full run (configs/full.yaml)
+    uv run python scripts/reproduce.py --smoke    # smoke test (configs/smoke.yaml)
+    uv run python scripts/reproduce.py --config <path>  # custom config
 """
 
 from __future__ import annotations
