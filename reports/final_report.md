@@ -1,12 +1,12 @@
 # Bike Demand Forecasting Report
 
 **Mode:** FULL
-**Run ID:** 20260717T023940Z
+**Run ID:** 20260717T024823Z
 **Config hash:** 3c9f8ba664dd
 **Source:** UCI Bike Sharing
-**Start:** 2026-07-17T02:39:40.004751+00:00
-**End:** 2026-07-17T02:40:12.696484+00:00
-**Duration:** 32.7s
+**Start:** 2026-07-17T02:48:23.632146+00:00
+**End:** 2026-07-17T02:48:52.590749+00:00
+**Duration:** 29.0s
 **Training samples:** 9991
 **Calibration samples:** 2583
 **Test samples:** 4257
